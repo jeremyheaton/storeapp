@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>StripeApp</title>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						
+					</button>
+					<a class="navbar-brand" href="/">Shop!</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li >
+							<% if user_signed_in? -%>
+							<% if !hasStore -%>
+							<a href="https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_82vMFKXEps2YZsM9NzApEvojTbWnkTJA&scope=read_write" class="stripe-connect light-blue dark"><span>Connect with Stripe and Create a store?</span></a>
+							<% end -%>
+							<%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+							<% else -%>
+							<%= link_to 'Sign in', new_user_session_path %>
+							<% end -%>
+						</li>
+						<li>
+							<% if user_signed_in? && hasStore -%>
+							<%= link_to 'New Item', new_item_path %>
+							<% end -%>
+						</li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+		<%= yield %>
+
+	</body>
+</html>

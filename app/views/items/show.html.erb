@@ -1,0 +1,43 @@
+<p id="notice">
+	<%= notice %>
+</p>
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<%= @item.product %> - $<%= @item.price %>
+				</div>
+				<div class="panel-body">
+					<img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+				</div>
+				<div class="panel-footer">
+					<%= @item.description %>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<%= form_tag  create_charges_path do %>
+			<article style="padding-top: 100px;">
+				<label class="amount"> <span>Amount: $<%= @item.price %></span> </label>
+			</article>
+
+			<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+			data-key="pk_test_HH1uIqvBFSUKB4LaSAjp58SX"
+			data-description="A month's subscription"
+			data-amount="
+			<%= @item.price*100 %>
+			"
+			data-locale="auto"
+			data-shipping-address="true"
+			data-billingAddress="true"
+			data-zip-code="true"
+
+<% if user_signed_in? %>data-email=<%= current_user.email %><% end %>></script>
+			<%= hidden_field_tag "item_id", @item.id %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
