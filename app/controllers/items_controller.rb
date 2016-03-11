@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    logger.debug @items.store.user
   end
 
   # GET /items/new

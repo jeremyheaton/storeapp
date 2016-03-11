@@ -8,4 +8,4 @@ it will only show all items of all stores.
 When a user makes an account they will have the option to also create a store once they are logged in.
 Currently only one store per user is supported. 
 
-A user with a store can add, delete, or edit the items of their store. 
+A user with a store can only add, delete, or edit the items of their store. 
