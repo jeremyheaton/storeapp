@@ -1,28 +1,11 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Test application for revv.
 
-Things you may want to cover:
+Currently supports multiple users and multiple stores. Currently can not drill down into items by store.
+it will only show all items of all stores. 
 
-* Ruby version
+When a user makes an account they will have the option to also create a store once they are logged in.
+Currently only one store per user is supported. 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+A user with a store can add, delete, or edit the items of their store. 

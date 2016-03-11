@@ -4,8 +4,8 @@ class StoresController < ApplicationController
   before_filter :authenticate_user!
   def create
     if !hasStore
-      api_key = 'sk_test_xVhoYx6VW8Wf3fjraphWA9TH'
-      client_id = 'pk_test_HH1uIqvBFSUKB4LaSAjp58SX'
+      api_key = Rails.configuration.stripe[:api_key]
+      client_id = Rails.configuration.stripe[:client_id]
       options = {
         :site => 'https://connect.stripe.com',
         :authorize_url => '/oauth/authorize',
